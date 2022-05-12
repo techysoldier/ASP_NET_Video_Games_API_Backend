@@ -23,10 +23,17 @@ namespace ASP_NET_Video_Games_API.Controllers
             return Ok(videoGamePublishers);
         }
 
-        [HttpGet("{pubName}")]
+        [HttpGet("publish/{pubName}")]
         public IActionResult GetGamesByPublisher(string pubName)
         {
             var videoGames = _context.VideoGames.Where(vg => vg.Publisher == pubName);
+            return Ok(videoGames);
+        }
+        //Get Games By ID
+        [HttpGet("gamebyid/{gameId}")]
+        public IActionResult GetGamesById(int gameId)
+        {
+            var videoGames = _context.VideoGames.Where(vg => vg.Id == gameId);
             return Ok(videoGames);
         }
     }
